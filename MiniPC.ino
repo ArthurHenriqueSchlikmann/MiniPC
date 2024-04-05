@@ -27,6 +27,7 @@ void setup() {
   for(int i =0; i < 4; i++) {
     pinMode(DPins[i], OUTPUT);
   }
+  digitalWrite(buzz, LOW);
 }
 
 void loop() {
