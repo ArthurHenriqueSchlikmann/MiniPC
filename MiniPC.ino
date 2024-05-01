@@ -25,6 +25,7 @@ void setup() {
   pinMode(buzz, OUTPUT);
   for(int i =0; i < 4; i++) {
     pinMode(DPins[i], OUTPUT);
+    Serial.print("iniciando em: " + i);
   }
   digitalWrite(buzz, LOW);
 }
