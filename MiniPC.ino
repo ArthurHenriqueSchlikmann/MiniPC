@@ -1,18 +1,17 @@
-#include <EEPROM.h>
 
 #define rele 7
 #define botao 8
 #define latch 4
 #define cs 5
 #define data 3
-#define DPins[4] = {11, 10, 9, 8};
+#define buzz 13
 
+int DPins[4] = {11, 10, 9, 8};
 int lig = LOW;
 int err = LOW;
 int btn = LOW;
 
-int table[10] = 
-{0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};
+int table[10] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};
 
 
 
