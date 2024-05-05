@@ -39,11 +39,11 @@ void loop() {
     err = LOW;
   }
   btn = digitalRead(botao);
-  if(seral.read == '1') {
+  if(Serial.read() == '1') {
       if(lig == HIGH) {lig = LOW;} else {lig = HIGH;}
       digitalWrite(rele, lig);
   }
-if(Serial.available < 1) {  
+if(Serial.available() < 1) {  
   err = HIGH;
   digitalWrite(buzz, HIGH);
     delay(500);
