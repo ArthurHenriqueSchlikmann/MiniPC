@@ -39,11 +39,16 @@ void loop() {
     err = LOW;
   }
   btn = digitalRead(botao);
-  if(btn == HIGH) {
+  if(seral.read == '1') {
       if(lig == HIGH) {lig = LOW;} else {lig = HIGH;}
       digitalWrite(rele, lig);
   }
-
+if(Serial.available < 1) {  
+  err = HIGH;
+  digitalWrite(buzz, HIGH);
+    delay(500);
+    digitalWrite(buzz, LOW);
+}
   Serial.print("O rele está a: ");
   Serial.println(lig);
   Serial.print("O estado do rele é: ");
