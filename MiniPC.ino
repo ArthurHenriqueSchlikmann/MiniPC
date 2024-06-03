@@ -1,16 +1,18 @@
-#include <EEPROM.h>
-
-
+#define buzzer 4
+#define led 2
 
 int lig = LOW;
 
-int table[10] = 
-{0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};
-
-
-
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(1200);
+  digitalWrite(buzzer, HIGH);
+  delay();
+  Serial.print("Booting ");
+  for(int i=0; 1<10; i++) {
+    Serial.print(". ");
+    delay(500);
+  }
 }
 
 void loop() {
