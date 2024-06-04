@@ -3,7 +3,7 @@
 #include <SD.h>
 
 #define buzzer 4
-#define led 13
+#define led 2
 
 int lig = LOW;
 boolean dos = false;
@@ -25,9 +25,12 @@ void setup() {
   }
   Serial.println("");
   sd = SD.exists("/dos.json");
-  if(sd == 1) {
-      dos = true;
+  if(sd == 0) {
       Serial.println("Nao foi reconhecido um cartao com o MSXr DOS");
+  } else {
+    Serial.println("Foi reconhecido um cartao com MSXr DOS, prosseguindo");
+    dos = true;
+    delay(2000);
   }
 }
 
@@ -39,6 +42,22 @@ void loop() {
     delay(5000);
     if(Serial.available() > 0) {
       comando = Serial.read();
+    }
+    if(comando = "boot") {
+        Serial.print("Booting ");
+        for(int i = 0; i < 5; i++) {
+          Serial.print(".");
+          delay(500);
+        }
+        Serial.println("");
+        sd = SD.exists("/dos.json");
+        if(sd == 0) {
+          Serial.println("Nao foi reconhecido um cartao com o MSXr DOS");
+        } else {
+          Serial.println("Foi reconhecido um cartao com MSXr DOS, prosseguindo");
+          dos = true;
+          delay(2000);
+        }
     }
   }
 }
