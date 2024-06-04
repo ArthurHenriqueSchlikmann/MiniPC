@@ -13,7 +13,7 @@ void setup() {
   delay(500);
   digitalWrite(buzzer, LOW);
   Serial.print("Booting ");
-  for(int i=0; i<5; i++) {
+  for(int i = 0; i < 5; i++) {
     Serial.print(".");
     delay(500);
   }
