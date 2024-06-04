@@ -1,9 +1,14 @@
+#include <SPI.h>
+
+#include <SD.h>
+
 #define buzzer 4
-#define led 2
+#define led 13
 
 int lig = LOW;
 boolean dos = false;
 String comando;
+int sd;
 
 void setup() {
   // put your setup code here, to run once:
@@ -12,10 +17,17 @@ void setup() {
   digitalWrite(buzzer, HIGH);
   delay(500);
   digitalWrite(buzzer, LOW);
+  SD.begin();
   Serial.print("Booting ");
   for(int i = 0; i < 5; i++) {
     Serial.print(".");
     delay(500);
+  }
+  Serial.println("");
+  sd = SD.exists("/dos.json");
+  if(sd == 1) {
+      dos = true;
+      Serial.println("Nao foi reconhecido um cartao com o MSXr DOS");
   }
 }
 
@@ -25,7 +37,6 @@ void loop() {
   if(dos == false) {
     Serial.println("Digite um comando ou escreva um programa");
     delay(5000);
-    Serial.
     if(Serial.available() > 0) {
       comando = Serial.read();
     }
