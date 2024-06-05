@@ -1,3 +1,5 @@
+#include <EEPROM.h>
+
 #include <SPI.h>
 
 #include <SD.h>
